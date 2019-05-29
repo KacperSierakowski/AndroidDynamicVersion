@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    def gitCommitCount = "git rev-list HEAD --count".execute().text.trim()
     defaultConfig {
         applicationId "com.example.androiddynamicversion"
         minSdkVersion 23
@@ -11,7 +12,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            versionNameSuffix ".${gitCommitCount}"
+        }
         release {
+            versionNameSuffix ".${gitCommitCount}"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
