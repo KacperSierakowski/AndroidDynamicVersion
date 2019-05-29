@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void BtnOne(View view) {
         try {
+            
             PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;
             int versionCode = pInfo.versionCode;
